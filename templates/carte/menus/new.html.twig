@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Menus{% endblock %}
+
+{% block body %}
+    <h1>Create new Menus</h1>
+
+    {{ include('carte/menus/_form.html.twig') }}
+    <a href="{{ path('app_formules_index') }}" >gérée les formules</a>
+    <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La carte{% endblock %}
+
+{% block body %}
+<article class="carte">
+    <h1>Notre carte</h1>
+    <div class="container">
+    {% for typeplat in typeplats %}
+        <div class="item-menu">
+            <h2> {{typeplat.name}} </h2>
+            <ul>               
+            {% for plat in plats %}
+                {% if typeplat.name == plat.type.name  %}
+                    <li class="elmt-menu">
+                        <h3> {{ plat.name }} </h3>
+                        <p> {{ plat.description }} </p>
+                        <p> {{plat.prix }}€ </p> 
+                    </li>
+                {% endif %} 
+            {% endfor %}    
+            </ul>
+        </div>
+    {% endfor %}
+    </div>
+    </article>
+    <article class="menus">
+        <h1>Nos Menus</h1>
+        <div class="menus-banner">
+            {% for menu in menuses %}
+            <div class="container">
+                <h2 class="nomMenus">{{ menu.name }}</h2>
+                <p class="descriptionMenus">{{ menu.description }}</p>
+                <div class="formule">
+                    {% for formules in menu.formule %}
+                        <p class="description">{{ formules.composition }} </p>
+                        <p class="prix">{{ formules.prix }}€</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>    
+    </article>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Plats{% endblock %}
+
+{% block body %}
+    <h1>Edit Plats</h1>
+
+    {{ include('carte/plats/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+
+    {{ include('carte/plats/_delete_form.html.twig') }}
+    
+{% endblock %}

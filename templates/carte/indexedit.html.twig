@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La carte{% endblock %}
+
+{% block body %}
+
+    <h3>Vos catégorie</h3>
+    <ul>
+    {% for typeplat in typeplats %}    
+        <li> {{typeplat.name}} </li>
+        {{ include('carte/typeplat/_delete_form.html.twig') }}
+        <a href="{{ path('app_type_plats_edit', {'id': typeplat.id}) }}">edit</a> 
+    {% endfor %}
+    </ul>
+    <a href="{{ path('app_type_plats_new') }}">Create new</a>
+
+    <h3>Vos plat</h3>
+       
+        
+    
+        <ul>
+        {% for plat in plats %}
+        <h4> {{plat.type.name}} </h4>
+            <li>
+                <h5> {{ plat.name }} </h5>
+                <p> {{ plat.description }} </p>
+                <p> {{plat.prix }}€ </p>
+                {{ include('carte/plats/_delete_form.html.twig') }}
+                <a href="{{ path('app_plats_edit', {'id': plat.id}) }}">edit</a> 
+            </li>
+        {% endfor %}
+        </ul>
+   
+    <a href="{{ path('app_plats_new') }}">Create new</a>
+
+    <h3>Vos Menus</h3>
+    <ul>
+    {% for menu in menuses %}
+        <li>
+            <h4>{{ menu.name }}</h4>
+            <p>{{ menu.description }}</p>
+            <ul>
+                {% for formules in menu.formule %}
+                    <li>
+                        <p>{{ formules.composition }} </p>
+                        <p>{{ formules.prix }}€</p>
+                    </li>
+                {% endfor %}
+            </ul>
+            {{ include('carte/menus/_delete_form.html.twig') }}
+            <a href="{{ path('app_menus_edit', {'id': menu.id}) }}">edit</a>
+        </li>
+    {% endfor %}
+    </ul>
+    <a href="{{ path('app_menus_new') }}">Create new</a>
+    
+        
+{% endblock %}

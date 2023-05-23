@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CAPACITEE{% endblock %}
+
+{% block body %}
+    <h1>La capacité du jour : {{ jour.jour }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.capacite) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_horaire') }}">Retour à la liste</a>
+{% endblock %}

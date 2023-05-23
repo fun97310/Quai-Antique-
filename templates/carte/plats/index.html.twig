@@ -1,0 +1,24 @@
+
+    <article class="carte">
+        <h1>Notre carte</h1>
+        <div class="container">
+        {% for typeplat in typeplats %}
+            <div class="item-menu">
+                <h2> {{typeplat.name}} </h2>
+                <ul>               
+                {% for plat in plats %}
+                    {% if typeplat.name == plat.type.name  %}
+                        <li class="elmt-menu">
+                            <h3> {{ plat.name }} </h3>
+                            <p> {{ plat.description }} </p>
+                            <p> {{plat.prix }}€ </p>
+                            <a href="{{ path('app_plats_edit', {'id': plat.id}) }}">edit</a> 
+                        </li>
+                    {% endif %} 
+                {% endfor %}    
+                </ul>
+            </div>
+        {% endfor %}
+        </div>
+        <a href="{{ path('app_plats_new') }}">Create new</a>
+    </article>

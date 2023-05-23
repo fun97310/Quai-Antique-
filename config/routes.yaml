@@ -3,3 +3,11 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+disponibilite:
+    path: /disponibilite
+    controller: App\Controller\ReservationController::disponibilite
+
+app_users_index:
+    path: /users
+    controller: App\Controller\UsersController::index

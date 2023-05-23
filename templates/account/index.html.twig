@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Bienvenue sur votre profil, {{ app.user.email }} !</h1>
+    <p>Voici vos informations :</p>
+    <ul>
+        <li>Adresse email : {{ user.email }}</li>
+        <li>Nombre de couvert : {{ user.nombrecouvert }}</li>
+        <li>Allergie : {{ user.allergie }}</li>
+    </ul>
+    <a href=" {{ path('app_logout') }} ">Se déconnecter</a>
+</div>
+{% endblock %}

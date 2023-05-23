@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="banner">
+    <h1>Experience the Essence of Local Flavor at <span class="logo">Quai Antique</span></h1>
+    <button><a href="{{ path('app_reservation_new') }}">Réserver maintenant</a></button>
+</div>
+<main>
+    <article class="about">
+      <div class="front about1">
+        <h2>About</h2>
+        <h3>our story</h3>
+        <p>Welcome to <span class="logo">"Quai Antique"</span> , the new gastronomic restaurant located in the heart of Chambéry. Our establishment offers a unique dining experience for lunch and dinner, featuring a cuisine without artifice. Our focus is on fresh, locally sourced ingredients that are expertly prepared to create a culinary experience that delights the senses.</p>
+      </div>
+      <div class="back about2">
+        <img src="{{ asset('img/about.png') }}" >
+      </div>
+    </article>
+
+    <article class="navigate">
+
+      <div class="navigate1">
+        <button><a href="{{ path('app_reservation_new') }}">réserver maintenant -></a></button>
+      </div>
+
+      <div class="navigate2">
+        <button><a href="{{ path('app_plats_index') }}">Notre menu</a></button>
+      </div>
+
+      <div class="navigate3">
+        <button><a href="#galerie">Galerie</a></button>
+      </div>
+    </article>
+    <article class="galerie-image">
+      {% for image in images %}
+            {% if image.path %}
+                <img src="{{ asset('images/' ~ image.path) }}" alt="{{ image.description }}" style="width: 350px;">
+            {% else %}
+                <p>!</p>
+            {% endif %}
+      {% else %}
+          <tr>
+            <td colspan="5">Bientot notre superbe galerie d'image de nos incontournable</td>
+          </tr>
+      {% endfor %}
+    </article>
+  </main>
+{% endblock %}

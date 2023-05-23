@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@300;500&family=Sail&family=Taviraj:wght@300;500&display=swap');
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+:root{
+  --brown-color: #3D312D;
+  --pink-color: #D6BCA5;
+  --font1: 'Maitree', serif;
+  --font2: 'Sail', cursive;
+  --font3: 'Taviraj', serif;
+}
+
+.fermer{
+  display: none;
+}
+
+.logo, .connexion, .banner h1, .navigate a{
+  color: #3D312D;
+}
+nav, .banner, .about1, .navigate{
+  display: flex;
+}
+
+nav{
+  justify-content: space-between;
+}
+
+header ul, header .close{
+  display: none;
+}
+.logo{
+  text-decoration:none;
+  font-family: 'Sail',cursive;
+
+}
+
+header .logo{
+  font-size: 1.5em;
+}
+header a, header img{
+  margin: 15px 15px 0 15px;
+}
+.cacher{
+  display:none;
+}
+header ul{
+  width:100vw;
+  height:100vh;
+  background-color: #3D312D;
+  font-family: 'Taviraj', serif;
+  text-decoration:none;
+  list-style:none;
+  flex-direction:column;
+  justify-content:center;
+  
+}
+header ul li a{
+  text-decoration:none;
+  color:#D6BCA5;
+}
+header li{
+  margin: 0 0 20px 40vw ;
+}
+
+.connexion{
+  font-size:1.1em;
+  padding: 5px;
+  border-radius:10px;
+  border: none;
+  background-color: #D6BCA5;
+  font-family: 'Taviraj', serif;
+  box-shadow: 10px 5px 20px #242424;
+}
+
+
+.close{
+  position:absolute;
+  right:30px;
+  top:30px;
+  background:#3D312D;
+  color: #D6BCA5;
+  border:none;
+  font-size:1.4em;
+}
+
+@media screen and (min-width: 700px) {
+   header .close, header  img{
+    display:none;
+  }
+   header ul{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:end;
+    width: 50%;
+    height:100%;
+    background-color: white;
+  }
+   header li {
+    margin:20px 15px;
+    padding:0;
+  }
+  header ul li a{
+    color:#3D312D;
+  }
+  .connexion{
+    background-color:#3D312D;
+    color: #D6bCA5;
+    padding:5px;
+  }
+}
+
+footer{
+  background:#3D312D;
+  color: #D6BCA5;
+  font-family:'Taviraj', serif;
+  display:flex;
+  flex-direction: column;
+  padding: 0 6vw;
+  
+}
+footer ul{
+  list-style:none;
+  font-family:'Maitree', serif;
+  color:#D6BCA5;
+}
+footer li{
+  display:flex;
+  justify-content: space-between;
+  margin: 5vw;
+}
+
+footer h4{
+  font-size: 1.5em;
+  text-align:center;
+}
+
+footer a{
+  color: #D6BCA5;
+  margin-top: 1vw;
+  text-decoration:none;
+}
+.footer-ligne{
+  height:2px;
+  width: 60vw;
+  background-color: #D6BCA5;
+  margin-bottom: 30px;
+}
+a{
+  word-wrap: wrap;
+}
+a:visited{
+  color: #D6BCA5;
+}
+@media screen and (min-width: 600px) {
+  footer{
+    flex-direction: row-reverse;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 15px;
+  }
+  footer .heure{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 10px;
+  }
+  .h-matin,.h-soir, .jour{
+    margin: 5px 5px;
+  }
+  
+  footer li{
+    margin: 0;
+  }
+  .footer-ligne{
+    width: 25vw;
+  }
+}
+
+.banner{
+  height: 50vh;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.banner h1{
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 2%;
+  
+}
+
+.banner h1 span{
+  font-size: 30px;
+}
+.banner a,.banner h1{
+  font-family: 'Taviraj', serif;
+}
+.banner button, .banner a{
+  border-radius: 20px;
+  border: none;
+  background-color: #3D312D;
+  color: #D6BCA5;
+  text-decoration: none;
+  width: 250px;
+  padding: 1%;
+}
+
+@media screen and (min-width: 700px){
+  .banner{
+    height: 100vh;
+  }
+  .banner h1{
+    font-size: 38px;
+    color: #3D312D;
+  }
+  .banner h1 span{
+    font-size: 50px;
+  }
+}
+
+/*Section About*/
+
+
+.about1{
+  color: #D6BCA5;
+  height: 70vh;
+  background: linear-gradient(180deg, rgba(61, 49, 45, 0.46) 0%, #3D312D 46.36%);
+  flex-direction: column;
+ 
+}
+.about1 h3{
+  position: absolute;
+  top: 40px;
+  margin-left: 60px;
+  font-family: 'Taviraj', serif;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+.about1 p span{
+  font-size: 1.4em ;
+}
+.about1 h2{
+  font-family: 'Sail', cursive;
+  font-weight: 400;
+  font-size: 2em;
+  margin: 2%;
+}
+.about1 p{
+  justify-self: center;
+  font-family: 'Maitree', serif;
+  font-size: 1em;
+  margin: 10% 4%;
+}
+.about .logo{
+  color: #D6BCA5;
+}
+.back{
+  position: Absolute;
+  z-index: 1;
+}
+.front{
+  position:absolute;
+  z-index: 2;
+}
+.about2{
+  right:0;
+}
+.about2 img{
+  height: 70vh;
+}
+
+@media screen and (min-width: 700px){
+  .about1{
+    height: 70vh;
+    background: linear-gradient(90deg, #3D312D 0%, #3D312D 60.17%, rgba(61, 49, 45, 0.94) 80.82%, rgba(61, 49, 45, 0.59) 101.39%);
+ 
+  }
+  .about1 h3{
+    top: 30px;
+    margin-left: 25px;
+  }
+  .about1 p span{
+    font-size: 1.4em ;
+  }
+  .about1 h2{
+    font-size: 2em;
+  }
+  .about1 p{
+    justify-self: center;
+    font-size: 1.2em;
+    margin: 6% 4%;
+  }
+
+  .about2{
+    right:0;
+  }
+  .about2 img{
+    height: 70vh;
+  }
+  
+
+}
+
+/*navigate*/
+.navigate{
+  padding-top: 70vh;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.navigate button{
+  background-color: #D6BCA5;
+  border: none;
+  padding: 3% 0;
+  width: 100%;
+}
+.navigate a{
+  text-decoration: none ;
+  font-family: 'Maitree', serif;
+}
+.navigate2 a, .navigate2 button{
+  background-color: #3D312D;
+  color: #D6BCA5;
+  font-size: 1.2em;
+  font-family: 'Sail', cursive;
+}
+
+@media screen and (min-width: 700px){
+  .navigate{
+    padding-top: 70vh;
+    flex-direction: row;
+    justify-items: center;
+  }
+  .navigate div{
+    width: 33.333%;
+    height: 40vh;
+    background-color: #D6BCA5;
+  }
+  .navigate1{
+    background-image: url(./img/img1.jpg);
+    background-size: cover;
+  }
+  .navigate3{
+    background-image: url(./img/img2.jpg);
+    background-size: cover;
+  }
+  .navigate button{
+    background-color: #3d312dc3;
+    border: none;
+    margin-top: 25%;
+    padding: 3% 0;
+    width: 100%;
+  }
+  .navigate a{
+    text-decoration: none ;
+    color: #D6BCA5;
+  }
+  .navigate2 a, .navigate2 button{
+    background-color: #D6BCA5;
+    color: #3D312D;
+  }
+}
+
+/*Page la carte*/
+:root{
+  --brown-color: #3D312D;
+  --pink-color: #D6BCA5;
+  --font1: 'Maitree', serif;
+  --font2: 'Sail', cursive;
+  --font3: 'Taviraj', serif;
+}
+
+.carte .item-menu h2, .carte h1, .menus h1{
+  color: #D6BCA5;
+  background-color: #3D312D;
+  text-align: center;
+}
+
+.carte  h1, .menus h1{
+  padding: 1%;
+  margin: 10vh 0;
+  font-family: 'Sail', cursive ;
+}
+
+.carte .item-menu{
+  border: 2px solid #3D312D;
+  margin: 4vh 8vw;
+}
+
+.carte .item-menu h2{
+  font-family: 'Maitree', serif;
+}
+.carte .item-menu ul{
+  list-style: none;
+  padding: 2% 1% 10% 2%;  
+}
+.carte .item-menu h3{
+  font-family: 'Taviraj', serif;
+  color: #3D312D;
+  margin-top: 2%;
+  font-size: medium;
+}
+.carte .item-menu p{
+  font-family: 'Maitree', serif ;
+  color: #6E869F;
+  margin-left: 5% ;
+  font-size: small;
+}
+@media screen and (min-width: 700px){
+  .carte .container{
+    display: flex;
+    justify-content: space-around;
+  }
+  .carte .item-menu{
+    margin: 0;
+    width: 30%;
+  }
+}
+
+.menu .container{
+  border: 1px solid #3D312D;
+  max-width: 50vw;
+}
+.menu .container h3, .menu .container .description{
+  text-align: center;
+}
+.formule{
+  display: flex;
+}
+
+
+
+.menus-banner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menus .container{
+  font-family: 'Maitree', serif ;
+  color: #3D312D;
+  border: 1px #3D312D solid;
+  padding: 1%;
+  margin: 2%;
+  min-width: 30vw;
+  
+}
+
+.menus-banner .container h3{
+  font-weight: normal;
+  text-align: center;
+}
+
+
+.menus-banner .container .descriptionMenus{
+  color: #6E869F;
+  text-align: center;
+  margin-bottom: 1%;
+
+}
+.menus-banner .container .formule .description, .menus-banner .container .prix{
+  padding: 1% ;
+}
+
+.nomMenus{
+  text-align: center;
+  color: #6E869F;
+  font-weight: normal;
+  padding-bottom: 3vw;
+  font-family: 'Maitree', serif ;
+}
+
+.btn .btn-primary {
+  background-color: #3D312D;
+}
+
+
+

@@ -1,0 +1,39 @@
+    <div class="horaire">
+        <h4>Nos horaires</h4>
+        <ul>
+            {% for jour in jours %}
+                <li> 
+                    <div class="jour">{{ jour.jour }}</div> 
+                    <div class="heure"> 
+                        {% if jour.hmatin.isclose == 1 %}
+                            <div class="h-matin">
+                                fermer
+                            </div>
+                        {% else %}
+                            <div class="h-matin">
+                                {{ jour.hmatin.houverture.format('H:i')|replace({':': 'h'}) }} 
+                                | 
+                                {{ jour.hmatin.hfermeture.format('H:i')|replace({':': 'h'}) }} 
+                            </div>
+                        {% endif %}
+        
+                        {% if jour.hsoir.isclose == 1 %}
+                            <div class="h-soir">
+                                fermer
+                            </div>
+                        {% else %}
+                            <div class="h-soir">
+                                {{ jour.hsoir.houverture.format('H:i')|replace({':': 'h'}) }} 
+                                | 
+                                {{ jour.hsoir.hfermeture.format('H:i')|replace({':': 'h'}) }} 
+                            </div>
+                        {% endif %}
+                    </div>
+                </li>   
+            {% else %}
+                <li>
+                    <td>erreur</td>
+                </li>
+            {% endfor %}   
+        </ul>
+    </div>

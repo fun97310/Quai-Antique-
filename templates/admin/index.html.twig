@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+{% block stylesheets %}
+  <link href="{{ asset('css/style1.css') }}" rel="stylesheet"/> 
+{% endblock stylesheets %}
+
+
+{% block body %}
+  <style>
+    
+    .link-contain{
+      display: flex ;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 80vh;
+      font-family: 'Maitree', serif;
+    }
+    .link-container{
+        height: 17vw;
+        width: 17vw;
+    }
+    .link-container a{
+        text-decoration: none;
+        text-align: center;
+    }
+    .link-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .link-containera , .link-containera a{
+        background-color: #3D312D;
+        color: #D6BCA5;
+    }
+    .link-containerb, .link-containerb a{
+        background-color:  #D6BCA5 ;
+        color:#3D312D;
+    }
+  </style>
+  <div class="link-contain" >
+    <div class="link-container link-containera">
+      <a href='{{ path('app_images_index') }}'>Vos Images</a>
+    </div>
+    <div class="link-container link-containerb">
+      <a href='{{ path('app_carte_indexedit') }}'>Gerer votre menus</a>
+    </div>
+    <div class="link-container link-containera">
+      <a href='{{ path('app_admin_reservation') }}'>Reservations</a>
+    </div>
+    <div class="link-container link-containerb">
+      <a href='{{ path('app_horaire') }}'>Mettez a jours vos horaires</a> </div> 
+    <div class="link-container link-containera">
+      <a href="{{ path('app_users_index') }}">gestion utilisateur</a>
+    </div>
+  </div>
+
+{% endblock %}
+
+

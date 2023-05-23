@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminReservationController!{% endblock %}
+
+{% block body %}
+        <h2>Les reservations</h2>
+        {% for date, reservations in reservationsByDate %}
+        <h2>{{ date }}</h2>
+        <ul>
+                {% for reservation in reservations %}
+                <li>{{ reservation.email }}</li>
+                <li>{{ reservation.nmbrcouvert }}</li>
+                <li>{{ reservation.heure }}</li>
+                <li>{{ reservation.allergie }}</li>
+                {% endfor %}
+        </ul>
+        {% endfor %}
+
+
+{% endblock %}

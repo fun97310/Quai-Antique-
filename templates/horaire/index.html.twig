@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HoraireController!{% endblock %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Jour</th>
+            <th>hmatin</th>
+            <th>day edit</th>
+            <th>hsoir</th>
+            <th>night edit</th>
+            <th>capacité</th>
+            <th>edit capacite</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for jour in jours %}
+        <tr>
+            <td>{{ jour.jour }}</td>
+
+            {% if jour.hmatin.isclose == 1 %}
+                <td>fermer</td>
+            {% else %}
+                <td>
+                    {{ jour.hmatin.houverture.format('H:i')|replace({':': 'h'}) }} 
+                    | 
+                    {{ jour.hmatin.hfermeture.format('H:i')|replace({':': 'h'}) }} 
+                </td>
+            {% endif %}
+            <td>
+                <a href="{{ path('app_horaire_editMatin', {'id': jour.id}) }}">edit</a>
+            </td>
+
+            {% if jour.hsoir.isclose == 1 %}
+                <td>fermer</td>
+            {% else %}
+                <td>
+                    {{ jour.hsoir.houverture.format('H:i')|replace({':': 'h'}) }} 
+                    | 
+                    {{ jour.hsoir.hfermeture.format('H:i')|replace({':': 'h'}) }} 
+                </td>
+            {% endif %}
+            <td>
+                <a href="{{ path('app_horaire_editSoir', {'id': jour.id}) }}">edit</a>
+            </td>
+            <td>{{ jour.capacite }}</td>
+            <td>
+                <a href="{{ path('app_horaire_editCapacite', {'id': jour.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('app_admin') }}">back</a>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% if not app.user %}
+{{ form_start(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.heure) }}
+    <div id="listedebutton"><label>Heure</label></div>
+    {{ form_row(form.nmbr_couvert) }}
+    <div id="infocapacite"></div>
+    {{ form_row(form.haveallergie) }}
+    {{ form_row(form.allergie) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Reserver') }}</button>
+{{ form_end(form) }}
+{% else %}
+{{ form_start(form) }}
+    {{ form_row(form.email, {'value': app.user.email}) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.heure) }}
+    <div id="listedebutton"><label>Heure</label></div>
+    {{ form_row(form.nmbr_couvert, {'value': app.user.NombreCouvert}) }}
+    <div id="infocapacite"></div>
+    {{ form_row(form.haveallergie) }}
+    {{ form_row(form.allergie, {'value': app.user.allergie}) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Reserver') }}</button>
+{{ form_end(form) }}
+{% endif %}
+
+

@@ -1,0 +1,23 @@
+<article class="menus">
+    <h1>Nos Menus</h1>
+    <div class="menus-banner">
+        {% for menu in menuses %}
+        <div class="container">
+            <h2 class="nomMenus">{{ menu.name }}</h2>
+            <p class="descriptionMenus">{{ menu.description }}</p>
+            <div class="formule">
+                {% for formules in menu.formule %}
+                    <p class="description">{{ formules.composition }} </p>
+                    <p class="prix">{{ formules.prix }}€</p>
+                {% endfor %}
+            </div>
+            {{ include('carte/menus/_delete_form.html.twig') }}
+            <a href="{{ path('app_menus_edit', {'id': menu.id}) }}">edit</a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ path('app_menus_new') }}">Create new</a>
+
+    <a href="{{ path('app_formules_index') }}" >gérée les formules</a>
+
+</article>

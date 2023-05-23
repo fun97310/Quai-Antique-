@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypePlats{% endblock %}
+
+{% block body %}
+    <h1>Create new TypePlats</h1>
+
+    {{ include('carte/typeplat/_form.html.twig') }}
+
+    <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+{% endblock %}
