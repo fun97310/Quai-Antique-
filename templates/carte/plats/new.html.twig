@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Plats{% endblock %}
+{% block title %}Quai Antique - Nouveau Plat{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/style-connexion.css') }}" rel="stylesheet"/> 
+{% endblock %}
+
 
 {% block body %}
-    <h1>Create new Plats</h1>
+    <h1>Ajouter un nouveau plat</h1>
 
     {{ include('carte/plats/_form.html.twig') }}
 
     <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+    
 {% endblock %}

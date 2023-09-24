@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Plats{% endblock %}
+{% block title %}Modifier le plat "{{plat.name}}" {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/style-connexion.css') }}" rel="stylesheet"/> 
+{% endblock %}
+
 
 {% block body %}
-    <h1>Edit Plats</h1>
+    <h1>Modifier le plats</h1>
 
-    {{ include('carte/plats/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('carte/plats/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+    <a href="{{ path('app_carte_indexedit') }}">Retour au menu</a>
 
     {{ include('carte/plats/_delete_form.html.twig') }}
     

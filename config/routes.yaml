@@ -11,3 +11,16 @@ disponibilite:
 app_users_index:
     path: /users
     controller: App\Controller\UsersController::index
+
+
+app_horaire_editMatin:
+    path: '/admin/{id}/editMatin'
+    controller: App\Controller\HoraireController::editMatin
+
+app_horaire_editSoir:
+    path: '/admin/{id}/editSoir'
+    controller: App\Controller\HoraireController::editSoir
+
+app_horaire_editCapacite:
+    path: '/admin/{id}/editCapacite'
+    controller: App\Controller\HoraireController::editCapacite

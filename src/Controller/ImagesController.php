@@ -23,6 +23,7 @@ class ImagesController extends AbstractController
     {
         $this->jour = $joursRepository->findAll();
     }
+    
     #[Route('/', name: 'app_images_index', methods: ['GET'])]
 
     public function index(ImagesRepository $imagesRepository): Response
@@ -71,7 +72,72 @@ class ImagesController extends AbstractController
             'form' => $form->createView(),
             'jours' => $this->jour,
         ]);
-    }
+    }/*
+
+        public function new(Request $request, ImagesRepository $imagesRepository): Response
+        {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+            $image = new Images();
+            $form = $this->createForm(ImagesType::class, $image);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                // Gérer le téléchargement du fichier
+                $file = $form->get('images')->getData();
+
+                try {
+                    // Vérifier si le fichier est bien téléchargé
+                    if ($file === null) {
+                        throw new \Exception("Aucun fichier n'a été téléchargé.");
+                    }
+
+                    // Vérifier les erreurs de téléchargement du fichier
+                    if ($file->getError() !== UPLOAD_ERR_OK) {
+                        throw new FileException('Une erreur s\'est produite lors du téléchargement du fichier.');
+                    }
+
+                    // Générer un nom de fichier unique
+                    $fileName = uniqid() . '.' . $file->guessExtension();
+
+                    // Déplacer le fichier vers le répertoire cible
+                    $file->move($this->getParameter('images_directory'), $fileName);
+
+                    // Mettre à jour l'objet Images avec les informations du formulaire
+                    $image->setPath($fileName);
+                    $image->setSize($file->getSize());
+
+                    // Enregistrer la description de l'image
+                    $description = $form->get('description')->getData();
+                    $image->setDescription($description);
+
+                    // Utiliser le repository pour enregistrer l'image dans la base de données
+                    $imagesRepository->save($image);
+
+                } catch (FileException $e) {
+                    // Gérer les erreurs de téléchargement du fichier
+                    return $this->render('images/new.html.twig', [
+                        'form' => $form->createView(),
+                        'jours' => $this->jour,
+                        'error_message' => 'Une erreur s\'est produite lors du téléchargement du fichier.',
+                    ]);
+                } catch (\Exception $e) {
+                    // Gérer les autres erreurs
+                    return $this->render('images/new.html.twig', [
+                        'form' => $form->createView(),
+                        'jours' => $this->jour,
+                        'error_message' => $e->getMessage(),
+                    ]);
+                }
+
+                return $this->redirectToRoute('app_images_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->render('images/new.html.twig', [
+                'form' => $form->createView(),
+                'jours' => $this->jour,
+            ]);
+        }*/
+
 
 
     #[Route('/{id}/edit', name: 'app_images_edit', methods: ['GET', 'POST'])]

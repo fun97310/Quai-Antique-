@@ -31,27 +31,25 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/disponibilite', name: 'disponibilite', methods: ['GET'], format: 'json')]
-    public function disponibilite( JoursRepository $joursRepository, ReservationRepository $reservationRepository): JsonResponse
+    public function disponibilite(JoursRepository $joursRepository, ReservationRepository $reservationRepository): JsonResponse
     {
-        $datajour = $this->jour;
+        $datajour = $joursRepository->findAll();
         $reservations = $reservationRepository->findAll();
-    
-        $data = [];
+
+        $reservationData = []; // Correction : Initialisation de $reservationData
+
         foreach ($reservations as $object) {
-            
             $reservationData[] = [
                 'nmbr_couvert' => $object->getNmbrCouvert(),
                 'date' => $object->getDate(),
-            ];    
-            
+            ];
         }
 
         $response = [
             'Reservations' => $reservationData,
             'jours' => [],
         ];
-        
-    
+
         foreach ($datajour as $jour) {
             $heureOuvertureMatin = $jour->getHMatin()->getHOuverture();
             $heureOuvertureMatinFormatted = $heureOuvertureMatin->format('H:i');
@@ -59,16 +57,15 @@ class ReservationController extends AbstractController
             $heureFermetureMatinFormatted = $heureFermetureMatin->format('H:i');
 
             $heureOuvertureSoir = $jour->getHSoir()->getHOuverture();
-            $heureOuvertureSoirMatinFormatted = $heureOuvertureSoir->format('H:i');
+            $heureOuvertureSoirFormatted = $heureOuvertureSoir->format('H:i');
             $heureFermetureSoir = $jour->getHSoir()->getHFermeture();
             $heureFermetureSoirFormatted = $heureFermetureSoir->format('H:i');
-            
 
             $response['jours'][] = [
                 'jour' => $jour->getJour(),
                 'heure_ouverture_matin' => $heureOuvertureMatinFormatted,
                 'heure_fermeture_matin' => $heureFermetureMatinFormatted,
-                'heure_ouverture_soir' => $heureOuvertureSoirMatinFormatted,
+                'heure_ouverture_soir' => $heureOuvertureSoirFormatted,
                 'heure_fermeture_soir' => $heureFermetureSoirFormatted,
                 'hmatin' => [
                     'isclose' => $jour->getHMatin()->isIsClose(),
@@ -79,60 +76,78 @@ class ReservationController extends AbstractController
                 'capacite' => $jour->getCapacite(),
             ];
         }
-    
+
         return new JsonResponse($response);
     }
+
     //all user
     
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ReservationRepository $reservationRepository, JoursRepository $joursRepository): Response
     {
+        // Crée une nouvelle instance de l'entité Reservation
         $reservation = new Reservation();
 
+        // Crée un formulaire pour la réservation en utilisant ReservationType (défini ailleurs dans le code)
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
+        // Vérifie si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupère le nombre de couverts et la date depuis le formulaire
             $nmbrCouvert = $form->get('nmbr_couvert')->getData();
             $date = $reservation->getDate();
             $jourSemaine = $date->format('N');
 
-            // Utilize your repository or data access method to retrieve the corresponding Jours object
+            // Utilise le repository JoursRepository pour récupérer l'objet Jours correspondant
             $jour = $joursRepository->find($jourSemaine);
 
+            // Vérifie que l'objet Jours est trouvé
             if ($jour) {
+                // Récupère la capacité maximale pour ce jour
                 $capaciteMax = $jour->getCapacite();
+
+                // Récupère toutes les réservations pour cette date
                 $reservations = $reservationRepository->findBy(['date' => $date]);
 
+                // Calcule la capacité disponible pour cette date en soustrayant le nombre de couverts des réservations existantes
                 foreach ($reservations as $existingReservation) {
-                    // Access the properties of each Reservation instance
                     $nmbrcouvert = $existingReservation->getNmbrCouvert();
                     $capaciteMax -= $nmbrcouvert;
                 }
 
+                // Soustrait également le nombre de couverts de la réservation actuelle
                 $capaciteMax -= $nmbrCouvert;
 
+                // Vérifie si la capacité maximale disponible est suffisante pour la réservation
                 if ($capaciteMax >= 0) {
+                    // Si oui, met à jour l'heure de la réservation et la sauvegarde en base de données
                     $heure = $form->get('heure')->getData();
                     $reservation->setHeure($heure);
                     $reservationRepository->save($reservation, true);
 
+                    // Redirige l'utilisateur vers la page de détails de la réservation nouvellement créée
                     return $this->redirectToRoute('app_reservation_show', [
                         'id' => $reservation->getId(),
                     ], Response::HTTP_SEE_OTHER);
                 } else {
-                    $complet = $this->renderView('admin_reservation/reservation/complete.html.twig');
+                    // Si la capacité maximale n'est pas suffisante, affiche une page d'erreur
+                    $complet = $this->renderView('admin_reservation/reservation/complete.html.twig',[
+                        'jours' => $this->jour,
+                    ]);
                     return new Response($complet);
                 }
             }
         }
 
+        // Si le formulaire n'est pas soumis ou n'est pas valide, affiche le formulaire de réservation
         return $this->render('admin_reservation/reservation/new.html.twig', [
             'reservation' => $reservation,
             'jours' => $this->jour,
             'form' => $form->createView(),
         ]);
     }
+
 
 
 

@@ -1,0 +1,58 @@
+
+h1 {
+    font-family: 'Maitree';
+    color: #3D312D;
+    font-weight: normal;
+    text-align: center;
+    margin: 5%;
+}
+
+form {
+    background: #D6BCA5;
+    margin: 2%;
+    padding: 3%;
+}
+
+form div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+form div input, form div button, button.btn {
+    background-color: #3D312D;
+    color: #D6BCA5;
+    font-family: 'Maitree';
+}
+
+div#listedebutton, div#reservation_haveallergie {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.buttonform {
+    margin: 2%;
+    width: 140px;
+}
+
+button.buttonform {
+    margin-bottom: 3%;
+}
+
+.clickedbtn{
+    border: 1px solid #3D312D;
+    background-color: #d6bca532;
+    color: #3D312D;
+}
+
+#listedebutton label {
+    width: 100%;
+}
+button.btn{
+    width: 150px;
+    padding: 5px;
+}
+
+
+

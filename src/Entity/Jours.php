@@ -66,6 +66,10 @@ class Jours
 
         return $this;
     }
+    public function getHMatinOuverture(): ?HeureMatins
+    {
+        return $this->h_matin;
+    }
 
     public function getCapacite(): ?int
     {

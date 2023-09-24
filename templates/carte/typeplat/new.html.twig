@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New TypePlats{% endblock %}
+{% block title %}Quai Antique - Nouvelle catégorie{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/style-connexion.css') }}" rel="stylesheet"/> 
+{% endblock %}
 
 {% block body %}
-    <h1>Create new TypePlats</h1>
+    <h1>Ajouter une nouvelle catégorie</h1>
 
     {{ include('carte/typeplat/_form.html.twig') }}
 
-    <a href="{{ path('app_carte_indexedit') }}">back to list</a>
+    <a href="{{ path('app_carte_indexedit') }}">retour au menu</a>
 {% endblock %}

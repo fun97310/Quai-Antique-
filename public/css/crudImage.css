@@ -1,0 +1,67 @@
+article {
+    width: 100%;
+    min-height: 70vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+article, .tool , .galerie-container, .galerie-container .item{
+    display: flex;
+}
+.tool{
+    justify-content:space-evenly;
+    margin-top: 2%;
+    
+}
+h1{
+    font-size:xx-large;
+    font-family: Taviraj;
+    width: 100%;
+    padding-left: 2%;
+}
+
+.galerie-container img.img.galerie {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+h2 {
+    font-size: larger;
+    
+}
+.presentation, h1{
+    color: #3d312d;
+}
+
+p, h2 {
+    text-align: center;
+}
+
+img.delete-btn, .edit {
+    width: 50px;
+}
+
+form button.btn {
+    border: none;
+    background: rgba(0,0,0,0);
+}
+.galerie-container .item .image-containeur{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.galerie-container .item{
+    flex-direction: column;
+    align-items:center;
+    width: 300px;
+}
+.galerie-container{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}

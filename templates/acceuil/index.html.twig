@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Quai Antique - Accueil{% endblock %}
 
 {% block body %}
 <div class="banner">
@@ -34,9 +34,13 @@
       </div>
     </article>
     <article class="galerie-image">
+      <h2>Galerie</h2>
+      <div class="galerie-container">
       {% for image in images %}
             {% if image.path %}
-                <img src="{{ asset('images/' ~ image.path) }}" alt="{{ image.description }}" style="width: 350px;">
+              <div class="image-container">
+                <img src="{{ asset('images/' ~ image.path | escape) }}" alt="{{ image.description | escape }}" style="width: 350px;">
+              </div>
             {% else %}
                 <p>!</p>
             {% endif %}
@@ -45,6 +49,8 @@
             <td colspan="5">Bientot notre superbe galerie d'image de nos incontournable</td>
           </tr>
       {% endfor %}
+      </div>
     </article>
   </main>
+  <button><a href="{{ path('app_reservation_new') }}">Réserver maintenant</a></button>
 {% endblock %}

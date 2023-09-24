@@ -46,6 +46,8 @@ header a, header img{
 }
 .cacher{
   display:none;
+  width: 0;
+  height: 0;
 }
 header ul{
   width:100vw;
@@ -75,6 +77,9 @@ header li{
   font-family: 'Taviraj', serif;
   box-shadow: 10px 5px 20px #242424;
 }
+.connexion a{
+  color: #D6BCA5;
+}
 
 
 .close{
@@ -96,7 +101,7 @@ header li{
     flex-direction: row;
     align-items:center;
     justify-content:end;
-    width: 50%;
+    width: 75%;
     height:100%;
     background-color: white;
   }
@@ -106,6 +111,7 @@ header li{
   }
   header ul li a{
     color:#3D312D;
+    font-size: small;
   }
   .connexion{
     background-color:#3D312D;
@@ -153,9 +159,7 @@ footer a{
 a{
   word-wrap: wrap;
 }
-a:visited{
-  color: #D6BCA5;
-}
+
 @media screen and (min-width: 600px) {
   footer{
     flex-direction: row-reverse;
@@ -342,11 +346,11 @@ a:visited{
     background-color: #D6BCA5;
   }
   .navigate1{
-    background-image: url(./img/img1.jpg);
+    background-image: url(../img/img1.jpg);
     background-size: cover;
   }
   .navigate3{
-    background-image: url(./img/img2.jpg);
+    background-image: url(../img/img2.jpg);
     background-size: cover;
   }
   .navigate button{
@@ -465,6 +469,46 @@ a:visited{
 }
 .menus-banner .container .formule .description, .menus-banner .container .prix{
   padding: 1% ;
+}
+
+
+article.galerie-image {
+  background-color: #3D312D;
+  color: #D6BCA5;
+  font-family: 'Sail';
+  font-size: x-large;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+  min-height: 80vh;
+}
+article.galerie-image h2{
+  padding: 5%;
+}
+.galerie-image .galerie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.galerie-image .image-container {
+  width: 90%;
+  height: 200px;
+  overflow:hidden;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: 5px;
+}
+
+.galerie-image .image-container img {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 700px){
+  .galerie-image .image-container {
+    width: 25%;
+  }
 }
 
 .nomMenus{

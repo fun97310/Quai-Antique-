@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\HeureMatins;
 use App\Entity\HeureSoirs;
 use App\Entity\Jours;
-use App\Form\HeureMatinsType;
+use App\Form\admin\HeureMatinsType;
 use App\Form\admin\HeureSoirsType;
 use App\Form\admin\JoursType;
 use App\Repository\HeureMatinsRepository;
@@ -28,7 +28,7 @@ class HoraireController extends AbstractController
     }
 
     #[Route('/admin/horaire', name: 'app_horaire')]
-    public function index(JoursRepository $joursRepository): Response
+    public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('horaire/index.html.twig', [
@@ -58,7 +58,6 @@ class HoraireController extends AbstractController
             'form' => $form,
         ]);
     }
-
     
 
     #[Route('/admin/{id}/editSoir', name: 'app_horaire_editSoir', methods: ['GET', 'POST'])]

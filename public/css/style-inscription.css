@@ -1,0 +1,51 @@
+h1 {
+    text-align: center;
+    color: #3D312D;
+    font-family: 'Taviraj';
+    margin: 0 0 2% 0px;
+}
+
+form {
+    text-align: center;
+    padding: 2%;
+    margin: 1% 11%;
+    border-radius: 15px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    align-self: flex-start;
+    margin-left: 30%;
+    color: #3D312D;
+    font-family: 'Taviraj';
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #3D312D;
+    background-color: #ffffff00;
+}
+
+input:focus{
+    outline: none; /* Supprimer l'outline par défaut pour tous les éléments <input> */
+      /* Autres styles de votre choix pour l'apparence de l'input */
+      border: 1px solid #3D312D;
+      padding: 5px;
+      border-radius: 3px;
+}
+
+.btn-register{
+    width: 150px;
+    border-radius: 20px;
+    border: 1px solid #3D312D;
+    color: #3D312D;
+    font-family: 'Maitree';
+    margin: 4% 0 0 42%;
+    background-color: #fff;
+}
+

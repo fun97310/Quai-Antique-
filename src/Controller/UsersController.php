@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/users')]
+#[Route('/admin/users')]
 class UsersController extends AbstractController
 {
     private $jour;
@@ -23,6 +23,7 @@ class UsersController extends AbstractController
     #[Route('/', name: 'app_users_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('users/index.html.twig', [
             'users' => $usersRepository->findAll(),
             'jours' => $this->jour,

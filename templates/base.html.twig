@@ -2,7 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>  
+        <title>{% block title %}Une gastronomie sans artifice - le Quai Antique{% endblock %}</title>
+        <meta name="description" content="Le Quai Antique une expérience gastronomique, à travers une cuisine sans artifice. Comme une promesse d/'un voyage dans son univers culinaire.">
+        <meta name="keywords" content="Gastronomie, Restaurant, Expérience, Culinaire, Chambéry, Producteur ">
+        <meta name="robots" content="index, nofollow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="French">  
+        <link rel="icon" type="image/png" href="{{ asset('./img/logo.png') }}">
+        
+
         {% block stylesheets %}
           
         {% endblock %}      
@@ -20,13 +28,12 @@
               <ul id='nav'>
                 <li><a href='{{ path('app_acceuil') }}'>Acceuil</a></li>
                 <li><a href='{{ path('app_carte') }}'>La Carte</a></li>
-                <li><a href="{{ path('app_reservation_new') }}">Reserver!</a></li> 
-                <li> <a href="{{ path('app_menus_index') }}"></a></li> 
+                <li><a href="{{ path('app_reservation_new') }}">Réserver</a></li> 
                 <li><button class="connexion" >
                   {% if is_granted('ROLE_USER') %}
                     <a href=" {{ path('app_account') }} ">Mon Compte</a>
                   {% else %}
-                    <a href=" {{ path('app_register') }} ">S'inscrire</a>
+                    <a href=" {{ path('app_login') }} ">Connexion</a>
                   {% endif %}
                 </button></li>
               </ul>
@@ -45,7 +52,7 @@
             <div class="footer-ligne"></div>
             <a href="#">Contact</a>
             <div class="footer-ligne"></div>
-            <a href="#">Mention legale</a>
+            <a href="#">Mentions legales</a>
             <div class="footer-ligne"></div>
             <a href="#">32 avenue des reblochons 73000 Chambèry</a>
             <div class="footer-ligne"></div>
@@ -53,32 +60,10 @@
           </div>  
         </footer>
         <script src="{{ asset('js/index.js') }}"></script>
-        <script src="{{ asset('js/horaire.js') }}"></script>
-        <script src="{{ asset('js/requestAjax.js') }}">
-          renderHoraires(jours);
-        </script>
-        <script>
+        {% block javascripts %}
           
-        </script>
+        {% endblock %}
+        
+        
     </body>
 </html>
-{#
-  <nav>
-              <a href='{{ path('app_home') }}' id='logo' class="logo">Quai Antique</a>
-              <button class="close" id='closebtn'>X</button>
-              <ul id='nav'>
-                <li><a href='{{ path('app_horaire') }}'>Acceuil</a></li>
-                <li><a href='{{ path('app_images_index') }}'>Acceuil</a></li>
-                <li><a href="{{ path('app_carte') }}">carte</a></li> 
-                <li> <a href="{{ path('app_menus_index') }}">Menu</a></li> 
-                <li><button class="connexion" >
-                  {% if is_granted('ROLE_USER') %}
-                    <a href=" {{ path('app_login') }} ">Mon Compte</a>
-                  {% else %}
-                    <a href=" {{ path('app_login') }} ">Se connecter</a>
-                  {% endif %}
-                </button></li>
-              </ul>
-              <img src="{{ asset('img/menu.png') }}" alt='icon menu' id='navbtn'>
-            </nav>
-#}

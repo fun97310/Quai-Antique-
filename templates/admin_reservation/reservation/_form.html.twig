@@ -9,7 +9,7 @@
     {{ form_row(form.haveallergie) }}
     {{ form_row(form.allergie) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Reserver') }}</button>
+    <button class="btn">{{ button_label|default('Réserver') }}</button>
 {{ form_end(form) }}
 {% else %}
 {{ form_start(form) }}
@@ -22,7 +22,7 @@
     {{ form_row(form.haveallergie) }}
     {{ form_row(form.allergie, {'value': app.user.allergie}) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Reserver') }}</button>
+    <button class="btn">{{ button_label|default('Réserver') }}</button>
 {{ form_end(form) }}
 {% endif %}
 

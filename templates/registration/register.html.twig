@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
-
+{% block title %}Quai Antique - Inscription{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/style-inscription.css') }}" rel="stylesheet"/> 
+{% endblock %}  
 {% block body %}
     <h1>Register</h1>
 
@@ -13,7 +15,7 @@
         {{ form_row(registrationForm.nombre_couvert) }}
         {{  form_row(registrationForm.allergie) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn-register">Register</button>
     {{ form_end(registrationForm) }}
 
     <a href=" {{ path('app_login') }} ">Se connecter</a>

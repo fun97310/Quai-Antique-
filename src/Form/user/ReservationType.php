@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,14 +21,18 @@ class ReservationType extends AbstractType
       
 
         $builder
-            ->add('email', EmailType::class)
-            ->add('nmbr_couvert')
+            ->add('email', EmailType::class, [
+                'label'=>'E-mail',
+            ])
+            ->add('nmbr_couvert',IntegerType::class, [
+                'label' => 'Nombre de couverts',
+            ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
                 'label' => 'Date',
             ])
             ->add('haveallergie', ChoiceType::class, [
-                'label' => 'Avez-vous des allergie a nous signaler',
+                'label' => 'Avez-vous des allergies à nous signaler ?',
                 'mapped' => false,
                 'expanded' => true,
                 'multiple' => false,
@@ -45,7 +50,7 @@ class ReservationType extends AbstractType
                 'required' =>false,
                 
                 ])
-            ->add('heure', TextType::class)
+            ->add('heure', HiddenType::class)
             
         ;
     }

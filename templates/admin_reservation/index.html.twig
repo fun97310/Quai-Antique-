@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminReservationController!{% endblock %}
+{% block title %}Quai Antique - Admin reservations{% endblock %}
+
+{% block stylesheets %}
+<link href="{{ asset('css/admin.css') }}" rel="stylesheet"/> 
+{% endblock stylesheets %}
 
 {% block body %}
-        <h2>Les reservations</h2>
-        {% for date, reservations in reservationsByDate %}
-        <h2>{{ date }}</h2>
-        <ul>
-                {% for reservation in reservations %}
-                <li>{{ reservation.email }}</li>
-                <li>{{ reservation.nmbrcouvert }}</li>
-                <li>{{ reservation.heure }}</li>
-                <li>{{ reservation.allergie }}</li>
-                {% endfor %}
-        </ul>
-        {% endfor %}
+        <article class="reservation">
+                <h1>Les réservations</h1>
+                <section>
 
+                        {% for date, reservations in reservationsByDate %}
+                        <div>
+                                <h2>{{ date }}</h2>
+                                <ul>
+                                        {% for reservation in reservations %}
+                                        <li>{{ reservation.email }}</li>
+                                        <li>{{ reservation.nmbrcouvert }}</li>
+                                        <li>{{ reservation.heure }}</li>
+                                        <li>{{ reservation.allergie }}</li>
+                                        {% endfor %}
+                                </ul>
+                        </div>
+                        {% endfor %}
+                        
+                </section>
+        </article>
 
 {% endblock %}

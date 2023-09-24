@@ -1,0 +1,74 @@
+/*admin acceuil*/
+.link-contain{
+  display: flex ;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 80vh;
+  font-family: 'Maitree', serif;
+}
+.link-container{
+    height: 17vw;
+    width: 17vw;
+}
+.link-container a{
+    text-decoration: none;
+    text-align: center;
+}
+.link-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.link-containera , .link-containera a{
+    background-color: #3D312D;
+    color: #D6BCA5;
+}
+.link-containerb, .link-containerb a{
+    background-color:  #D6BCA5 ;
+    color:#3D312D;
+}
+
+@media screen and (max-width: 749px) {
+    .link-contain{
+        flex-direction: column;
+    }
+    .link-container{
+        width: 80%;
+    }
+
+}
+
+/*admin reservation*/
+
+.reservation section div {
+    background: #3D312D;
+    color:#D6BCA5;
+    margin: 1%;
+    max-width: 35%;
+    text-align: center;
+}
+
+.reservation    section {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.reservation   ul li {
+    list-style: none;
+}
+
+.reservation   h1{
+    text-align: center;
+    font-family: taviraj;
+    color: #3D312D;
+    
+}
+
+@media screen and (max-width: 749px) {
+    .reservation section div {
+        max-width: 90%;
+    }
+
+}
+  

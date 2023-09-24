@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Images{% endblock %}
+{% block title %}Quai Antique - Ajouter image{% endblock %}
 {% block stylesheets %}
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"/>   
-{% endblock %}      
+    <link href="{{ asset('css/style-connexion.css') }}" rel="stylesheet"/> 
+{% endblock %}
         
 {% block body %}
 
-    <h1>Create new Images</h1>
+    <h1>Ajouter une Image</h1>
 
     {{ include('images/_form.html.twig') }}
 
-    <a href="{{ path('app_images_index') }}">back to list</a>
+    <a href="{{ path('app_images_index') }}">Retour</a>
 {% endblock %}

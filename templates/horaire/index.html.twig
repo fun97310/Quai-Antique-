@@ -1,18 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HoraireController!{% endblock %}
+{% block title %}Quai Antique - Admin Horaire{% endblock %}
+{% block stylesheets %}
+<link href="{{ asset('css/modal.css') }}" rel="stylesheet"/>         
+{% endblock %}      
+        
 
 {% block body %}
 <table class="table">
     <thead>
         <tr>
             <th>Jour</th>
-            <th>hmatin</th>
-            <th>day edit</th>
-            <th>hsoir</th>
-            <th>night edit</th>
+            <th>Matin</th>
+            <th>tool</th>
+            <th>Soir</th>
+            <th>tool</th>
             <th>capacité</th>
-            <th>edit capacite</th>
+            <th>tool</th>
         </tr>
     </thead>
     <tbody>
@@ -21,16 +25,18 @@
             <td>{{ jour.jour }}</td>
 
             {% if jour.hmatin.isclose == 1 %}
-                <td>fermer</td>
+                <td>fermé</td>
             {% else %}
                 <td>
                     {{ jour.hmatin.houverture.format('H:i')|replace({':': 'h'}) }} 
-                    | 
+                    - 
                     {{ jour.hmatin.hfermeture.format('H:i')|replace({':': 'h'}) }} 
+                    
                 </td>
             {% endif %}
+           
             <td>
-                <a href="{{ path('app_horaire_editMatin', {'id': jour.id}) }}">edit</a>
+                <button class="editbtn" id="btn-editMatin" data-id="{{ jour.id }}" data-function="editMatin" data-form="heure_matins"><img src="{{ asset('img/update.png') }}" ></button>
             </td>
 
             {% if jour.hsoir.isclose == 1 %}
@@ -38,16 +44,16 @@
             {% else %}
                 <td>
                     {{ jour.hsoir.houverture.format('H:i')|replace({':': 'h'}) }} 
-                    | 
+                    - 
                     {{ jour.hsoir.hfermeture.format('H:i')|replace({':': 'h'}) }} 
                 </td>
             {% endif %}
             <td>
-                <a href="{{ path('app_horaire_editSoir', {'id': jour.id}) }}">edit</a>
+                <button class="editbtn"  id="btn-editSoir" data-id="{{ jour.id }}" data-function="editSoir" data-form="heure_soirs"><img src="{{ asset('img/update.png') }}" ></button>
             </td>
             <td>{{ jour.capacite }}</td>
             <td>
-                <a href="{{ path('app_horaire_editCapacite', {'id': jour.id}) }}">edit</a>
+                <button class="editbtn"  id="btn-editCapacite" data-id="{{ jour.id }}" data-function="editCapacite" data-form="jours"><img src="{{ asset('img/update.png') }}" ></button>
             </td>
         </tr>
     {% else %}
@@ -57,6 +63,44 @@
     {% endfor %}
     </tbody>
 </table>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <button class="close">&times;</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+<style>
+    button.editbtn {
+    border: none;
+    background: rgba(0,0,0,0);
+}
+
+button img {
+    height: 34px;
+    opacity: 1;
+}
+td, th{
+    text-align:center;
+    padding: 10px;
+}
+
+tr:nth-child(even){
+    background-color:#D6BCA5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead{
+    background: #3D312D;
+    color: #D6BCA5;
+    font-family: system-ui;
+    margin:0;
+}
+</style>
 <a href="{{ path('app_admin') }}">back</a>
+<script src="{{ asset('js/horaireModal.js') }}"></script>
 
 {% endblock %}

@@ -1,0 +1,56 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1%;
+    margin: 2%;
+    color: #3D312D;
+    font-family: 'Maitree';
+}
+
+
+
+input {
+    width: 46%;
+    border: none;
+    border-bottom: 1px solid #3D312D;
+    margin: 2%;
+}
+
+input:focus{
+    outline: none; /* Supprimer l'outline par défaut pour tous les éléments <input> */
+      /* Autres styles de votre choix pour l'apparence de l'input */
+      border: 1px solid #3D312D;
+      padding: 5px;
+      border-radius: 3px;
+}
+
+form button{
+    width: 150px;
+    border-radius: 20px;
+    border: 1px solid #3D312D;
+    color: #3D312D;
+    font-family: 'Maitree';
+    margin: 4% 0 0 42%;
+    background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #3D312D;
+    font-family: 'Taviraj';
+    margin: 0 0 2% 0px;
+}
+
+.delete{
+    background: rgba(0,0,0,0);
+    border: none;
+    margin:0;
+    width: 25px
+}
+
+.delete img{
+    width:30px;
+    position: absolute;
+    bottom: 200px;
+}

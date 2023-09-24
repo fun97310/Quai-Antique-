@@ -1,27 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Images index{% endblock %}
+{% block title %}Galerie d'image - paramétre{% endblock %}
+
+{% block stylesheets %}
+<link href="{{ asset('css/crudImage.css') }}" rel="stylesheet"/>  
+
+{% endblock %}      
+      
 
 {% block body %}
-    <h1>Images index</h1>
-
+<article>
+    <h1>Galerie d'images</h1>
+    <div class="galerie-container">
 
         {% for image in images %}
             {% if image.path %}
-                <img src="{{ asset('images/' ~ image.path) }}" alt="{{ image.description }}" style="width: 150px;">
-                <a href="{{ path('app_images_edit', {'id': image.id}) }}">edit</a>
-                {{ include('images/_delete_form.html.twig') }}
+            <div class="item" >
+                <div class="image-containeur">
+                    <img class="img galerie" src="{{ asset('images/' ~ image.path) }}" alt="{{ image.description }}" >
+                </div>
+                <div class="presentation">
+                    <h2 >{{ image.name }}</h2>
+                    <p> {{ image.description  }}</p>
+                </div>
+                <div class="tool">
+                    <a href="{{ path('app_images_edit', {'id': image.id}) }}"><img class="edit" src="{{ asset('img/update.png') }}" ></a>
+                    {{ include('images/_delete_form.html.twig') }}
+                </div>
+            </div>
             {% else %}
                 <p>Aucune image disponible.</p>
             {% endif %}
         {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
+             <a href="{{ path('app_images_new') }}">Ajouter une image</a>
         {% endfor %}
+    </div>
+</article>
   
 
     <a href="{{ path('app_images_new') }}">Create new</a>
     <a href="{{ path('app_admin') }}">go back</a>
+
+
 {% endblock %}
 
